@@ -11,14 +11,6 @@
 		<figure>
 			<h2 class="h2">Register to Flopper</h2>
 		</figure>
-		<!-- / 
-		<div class="flex justify-center space-x-2">
-            <div class="card p-6">
-                <input class="input" title="Username" type="input" />
-                <input class="input" title="Email" type="email" placeholder="user@flopper.xyz" autocomplete="email" />
-                <input class="input" title="Password" type="password" />
-            </div>
-		</div>-->
         <div class="card p-4 w-full text-token space-y-4 variant-ghost">
             <label class="label">
                 <span>Username</span>
