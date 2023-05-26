@@ -3,6 +3,11 @@
 	import PageTransitions from '../../lib/PageTransitions.svelte';
 	import { type ModalSettings, modalStore, localStorageStore } from '@skeletonlabs/skeleton';
 
+	if (localStorage.flopperToken) {
+        onMount(() => {window.open("/dashboard/user","_self")});
+    }
+
+
 	function error(): void {
 		const m: ModalSettings = {
 			type: 'confirm',
@@ -12,6 +17,8 @@
 		};
 		modalStore.trigger(m);
 	}
+
+
 
 	function login() {
 		var emailInput = document.getElementById('email-input');

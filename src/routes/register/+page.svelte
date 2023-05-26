@@ -2,10 +2,6 @@
 <script>
     import PageTransitions from "../../lib/PageTransitions.svelte";
     import { onMount } from "svelte";
-    
-    if (localStorage.flopperToken) {
-        onMount(() => {window.open("/dashboard/user","_self")});
-    }
 </script>
 <div class="container h-full mx-auto flex justify-center items-center">
     <PageTransitions>
