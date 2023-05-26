@@ -5,10 +5,11 @@
 	import { onMount } from "svelte";
 
 	let username;
-	OnRoute(() => {
-		if(typeof window !== 'undefined') {
-			username = localStorage.getItem('username');
-		}
+	
+	onMount(() => {
+    	if(typeof window !== 'undefined') {
+ 	   		username = localStorage.getItem('username');
+    	}
 	});
 
 	let nameTitle;
