@@ -2,12 +2,18 @@
 
 <script lang="ts">
 	import PageTransitions from '../../../lib/PageTransitions.svelte';
-	
-	var username = localStorage.getItem('username');
+	import { onMount } from "svelte";
 
-	var nameTitle = document.getElementById('nameTitle');
+	let username;
+	OnRoute(() => {
+		if(typeof window !== 'undefined') {
+			username = localStorage.getItem('username');
+		}
+	});
+
+	//var nameTitle = document.getElementById('nameTitle');
 	// @ts-ignore
-	nameTitle.innerHTML = 'Welcome, ' + username + '!';
+	//nameTitle.innerHTML = 'Welcome, !';
 </script>
 
 <div class="container mx-auto p-8 space-y-8">
@@ -21,7 +27,7 @@
 		</h1>
 		<section>
 			<div class="card p-20 container mx-auto space-y-8">
-				<h2 class="h2" id="nameTitle">welcome, !</h2>
+				<h2 class="h2" id="nameTitle">welcome, {username}!</h2>
 				<p>account creation date + whatever else i want to put smh :skiull:</p>
 			</div>
 			<div class="card p-20 container mx-auto space-y-8">
