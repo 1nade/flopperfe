@@ -2,7 +2,7 @@
 <script lang="ts">
 	import PageTransitions from '../../lib/PageTransitions.svelte';
 	import { type ModalSettings, modalStore, localStorageStore } from '@skeletonlabs/skeleton';
-
+	import { onMount } from "svelte";
 	if (localStorage.flopperToken) {
         onMount(() => {window.open("/dashboard/user","_self")});
     }

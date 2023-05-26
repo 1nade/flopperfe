@@ -5,7 +5,7 @@
 	import { onMount } from "svelte";
 
 	let username;
-	
+
 	onMount(() => {
     	if(typeof window !== 'undefined') {
  	   		username = localStorage.getItem('username');
