@@ -11,9 +11,9 @@
 		}
 	});
 
-	//var nameTitle = document.getElementById('nameTitle');
+	let nameTitle;
 	// @ts-ignore
-	//nameTitle.innerHTML = 'Welcome, !';
+	nameTitle.innerHTML = 'Welcome, !';
 </script>
 
 <div class="container mx-auto p-8 space-y-8">
