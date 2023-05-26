@@ -1,9 +1,10 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 <script>
     import PageTransitions from "../../lib/PageTransitions.svelte";
-    function register()
-    {
-        alert('Hello from register()!');
+    import { onMount } from "svelte";
+    
+    if (localStorage.flopperToken) {
+        onMount(() => {window.open("/dashboard/user","_self")});
     }
 </script>
 <div class="container h-full mx-auto flex justify-center items-center">
@@ -28,7 +29,6 @@
                 <div class="label">
                     <a
                     class="btn variant-ghost"
-                    on:click={register}
                     href="/login/registered/"
                     rel="noreferrer"
                     >

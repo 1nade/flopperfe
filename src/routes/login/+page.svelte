@@ -1,59 +1,80 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
-<script>
-	import PageTransitions from "../../lib/PageTransitions.svelte";
+<script lang="ts">
+	import PageTransitions from '../../lib/PageTransitions.svelte';
+	import { type ModalSettings, modalStore, localStorageStore } from '@skeletonlabs/skeleton';
 
-    function login() {
-	  var emailInput = document.getElementById("email-input");
-	  // @ts-ignore
-	  var email = emailInput.value;
+	function error(): void {
+		const m: ModalSettings = {
+			type: 'confirm',
+			title: 'Error',
+			body: 'sdfsdfsfdsfdsfd',
+			response: (r: boolean) => console.log('response:', r)
+		};
+		modalStore.trigger(m);
+	}
 
-	  var passwordInput = document.getElementById("password-input");
-      // @ts-ignore
-      var password = passwordInput.value;
+	function login() {
+		var emailInput = document.getElementById('email-input');
+		// @ts-ignore
+		var email = emailInput.value;
 
-      var url = "https://backend.flopper.xyz/infinity/acct/login?email=" + email + "&password=" + password;
+		var passwordInput = document.getElementById('password-input');
+		// @ts-ignore
+		var password = passwordInput.value;
 
-      var request = new XMLHttpRequest();
-      request.open("GET", url, true);
-      request.onreadystatechange = function() {
-        if (request.readyState === 4 && request.status === 200) {
-          var response = JSON.parse(request.responseText);
-          // Use the parsed JSON response here
-          console.log(response);
-        }
-      };
-      request.send();
-    }
+		var url =
+			'https://backend.flopper.xyz/infinity/acct/login?email=' + email + '&password=' + password;
+
+		var request = new XMLHttpRequest();
+		request.open('GET', url, true);
+		request.onreadystatechange = function () {
+			if (request.readyState === 4 && request.status === 200) {
+				var response = JSON.parse(request.responseText);
+				// Use the parsed JSON response here
+				console.log(response);
+				if (response.message == 'wow') {
+					alert('Whoops! Your password is not correct');
+				} else if (response.message == 'user does not exist') {
+					alert('Whoops! Your account does not exist.');
+				} else {
+					localStorage.setItem('username', response.username);
+                    localStorage.setItem('flopperToken', response.sessionId);
+                    localStorage.setItem('createdAt', response.createdAt);
+                    
+				}
+			}
+		};
+		request.send();
+	}
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
-    <PageTransitions>
-        <div class="space-y-10 text-center flex flex-col items-center">
-            <figure>
-                <h2 class="h2">Login to Flopper</h2>
-            </figure>
-            <div class="card p-4 w-full text-token space-y-4 variant-ghost">
-                <label class="label">
-                    <span>Email</span>
-                    <input class="input" title="Email" type="search" placeholder="user@flopper.xyz" id="email-input" />
-                </label>
-                <label class="label">
-                    <span>Password</span>
-                    <input class="input" title="Password" type="password" id="password-input" />
-                </label>
-                <div class="label">
-                    <a
-                    class="btn variant-ghost"
-                    on:click={login}
-                    href="/login"
-                    rel="noreferrer"
-                    >
-                        Login
-                    </a>
-                </div>
-            </div>
-        </div>
-    </PageTransitions>
+	<PageTransitions>
+		<div class="space-y-10 text-center flex flex-col items-center">
+			<figure>
+				<h2 class="h2">Login to Flopper</h2>
+			</figure>
+			<div class="card p-4 w-full text-token space-y-4 variant-ghost">
+				<label class="label">
+					<span>Email</span>
+					<input
+						class="input"
+						title="Email"
+						type="search"
+						placeholder="user@flopper.xyz"
+						id="email-input"
+					/>
+				</label>
+				<label class="label">
+					<span>Password</span>
+					<input class="input" title="Password" type="password" id="password-input" />
+				</label>
+				<div class="label">
+					<a class="btn variant-ghost" on:click={login} href="/login" rel="noreferrer"> Login </a>
+				</div>
+			</div>
+		</div>
+	</PageTransitions>
 </div>
 
 <style lang="postcss">
@@ -66,8 +87,7 @@
 	}
 	.img-bg {
 		@apply absolute z-[-1] rounded-full blur-[50px] transition-all;
-		animation: pulse 5s cubic-bezier(0, 0, 0, 0.5) infinite,
-			glow 5s linear infinite;
+		animation: pulse 5s cubic-bezier(0, 0, 0, 0.5) infinite, glow 5s linear infinite;
 	}
 	@keyframes glow {
 		0% {
