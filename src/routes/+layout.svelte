@@ -12,9 +12,11 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
-		<AppBar>
+		<AppBar class="opacity-50">
 			<svelte:fragment slot="lead">
-				<span class="bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone text-xl text-bold">Flopper</span>
+				<span class="bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone text-xl font-extrabold">
+					<a href="/">Flopper</a>
+				</span>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a

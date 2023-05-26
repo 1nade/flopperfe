@@ -1,29 +1,53 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<script>
+	import PageTransitions from '../lib/PageTransitions.svelte';
+	import { fly, scale } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+	import { onMount } from 'svelte';
+	import OnMountTransition from '$lib/OnMountTransition.svelte';
 
+	let loaded = false;
+	onMount(() => loaded = true);
+</script>
+<head>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css">
+	<title>Flopper | Home</title>
+</head>
+<!-- Load check -->
+{#if loaded}
 <div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-10 text-center flex flex-col items-center">
-		<figure>
-			<span class="badge variant-ghost-secondary absolute -top-5 -right-12 z-10">S13.40-9.10</span>
-			<h2 class="h2">Welcome to Flopper!</h2>
-		</figure>
-		<!-- Animated Logo -->
-		<figure>
+	<OnMountTransition>
+		<div class="space-y-10 text-center flex flex-col items-center">
+			<figure>
+				<span class="badge variant-ghost-secondary absolute -top-5 -right-12 z-10">S13.40-9.10</span>
+				<h2 class="h2">Welcome to Flopper!</h2>
+			</figure>
 			<section class="img-bg" />
-			<img src="https://static.wikia.nocookie.net/fortnite/images/4/4f/Orange_Flopper_-_Floppers_-_Fortnite.png" />
-		</figure>
-		<!-- / -->
-		<div class="flex justify-center space-x-2">
-			<a
-				class="btn variant-ghost-secondary"
-				href="https://discord.gg/flopper"
-				target="_blank"
-				rel="noreferrer"
-			>
-				Get Started
-			</a>
+			<figure>
+				<img src="/logo.png" alt="logo" />
+			</figure>
+			<div class="flex justify-center space-x-2">
+				<a
+					class="btn variant-ghost-secondary"
+					href="/register"
+					target="_blank"
+					rel="noreferrer"
+				>
+					Get Started
+				</a>
+			</div>
 		</div>
-	</div>
+		<!--
+		TODO fix spacing between icons	
+
+		<div class="space-y-5 h-full mx-auto flex justify-center items-center">
+			<a href="https://discord.gg/flopper"><p class="fab fa-discord mr-3"></p></a>
+			<a href="https://github.com/z4xi"><p class="fab fa-youtube mr-3"></p></a>
+		</div>
+		-->
+	</OnMountTransition>
 </div>
+{/if}
 
 <style lang="postcss">
 	figure {

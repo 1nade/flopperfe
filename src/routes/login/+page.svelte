@@ -1,45 +1,59 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 <script>
-    function register()
-    {
-        alert('Hello from register()!');
+	import PageTransitions from "$lib/PageTransitions.svelte";
+
+    function login() {
+	  var emailInput = document.getElementById("email-input");
+	  // @ts-ignore
+	  var email = emailInput.value;
+
+	  var passwordInput = document.getElementById("password-input");
+      // @ts-ignore
+      var password = passwordInput.value;
+
+      var url = "https://backend.flopper.xyz/infinity/acct/login?email=" + email + "&password=" + password;
+
+      var request = new XMLHttpRequest();
+      request.open("GET", url, true);
+      request.onreadystatechange = function() {
+        if (request.readyState === 4 && request.status === 200) {
+          var response = JSON.parse(request.responseText);
+          // Use the parsed JSON response here
+          console.log(response);
+        }
+      };
+      request.send();
     }
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-10 text-center flex flex-col items-center">
-		<figure>
-			<h2 class="h2">Login to Flopper</h2>
-		</figure>
-		<!-- / 
-		<div class="flex justify-center space-x-2">
-            <div class="card p-6">
-                <input class="input" title="Username" type="input" />
-                <input class="input" title="Email" type="email" placeholder="user@flopper.xyz" autocomplete="email" />
-                <input class="input" title="Password" type="password" />
-            </div>
-		</div>-->
-        <div class="card p-4 w-full text-token space-y-4 variant-ghost">
-            <label class="label">
-                <span>Username</span>
-                <input class="input" title="Username" type="search" placeholder="xX_FortniteGamer69_Xx" />
-            </label>
-            <label class="label">
-                <span>Password</span>
-                <input class="input" title="Password" type="password" />
-            </label>
-            <div class="label">
-                <a
-				class="btn variant-ghost"
-				on:click={register}
-                href="/login"
-				rel="noreferrer"
-                >
-                    Login
-                </a>
+    <PageTransitions>
+        <div class="space-y-10 text-center flex flex-col items-center">
+            <figure>
+                <h2 class="h2">Login to Flopper</h2>
+            </figure>
+            <div class="card p-4 w-full text-token space-y-4 variant-ghost">
+                <label class="label">
+                    <span>Email</span>
+                    <input class="input" title="Email" type="search" placeholder="user@flopper.xyz" id="email-input" />
+                </label>
+                <label class="label">
+                    <span>Password</span>
+                    <input class="input" title="Password" type="password" id="password-input" />
+                </label>
+                <div class="label">
+                    <a
+                    class="btn variant-ghost"
+                    on:click={login}
+                    href="/login"
+                    rel="noreferrer"
+                    >
+                        Login
+                    </a>
+                </div>
             </div>
         </div>
-	</div>
+    </PageTransitions>
 </div>
 
 <style lang="postcss">
