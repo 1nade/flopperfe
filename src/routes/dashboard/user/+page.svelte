@@ -29,7 +29,8 @@
 			</div>
 			<div class="card p-20 container mx-auto space-y-8">
 				<h2 class="h2">item shop</h2>
-				<p>TODO put item shop here - ian</p>
+				<p>TODO:</p>
+				<p>Setup Item shop ui</p>
 			</div>
 		</section>
 	</PageTransitions>
