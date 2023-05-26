@@ -1,7 +1,7 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 
 <script lang="ts">
-    import PageTransitions from "$lib/PageTransitions.svelte";
+    import PageTransitions from "../../../lib/PageTransitions.svelte";
     import { type ModalSettings, modalStore } from "@skeletonlabs/skeleton";
 
     

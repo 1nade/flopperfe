@@ -4,7 +4,7 @@
 	import { fly, scale } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
-	import OnMountTransition from '$lib/OnMountTransition.svelte';
+	import OnMountTransition from '../lib/PageTransitions.svelte';
 
 	let loaded = false;
 	onMount(() => loaded = true);

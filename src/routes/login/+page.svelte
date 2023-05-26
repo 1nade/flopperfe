@@ -1,6 +1,6 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 <script>
-	import PageTransitions from "$lib/PageTransitions.svelte";
+	import PageTransitions from "../../lib/PageTransitions.svelte";
 
     function login() {
 	  var emailInput = document.getElementById("email-input");

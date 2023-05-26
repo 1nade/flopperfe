@@ -1,6 +1,6 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 <script>
-    import PageTransitions from "E:/projects/web/flopper/src/lib/PageTransitions.svelte";
+    import PageTransitions from "../../lib/PageTransitions.svelte";
     function register()
     {
         alert('Hello from register()!');
