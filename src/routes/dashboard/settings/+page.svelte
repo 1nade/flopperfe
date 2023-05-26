@@ -3,12 +3,21 @@
 <script lang="ts">
     import PageTransitions from "../../../lib/PageTransitions.svelte";
     import { type ModalSettings, modalStore } from "@skeletonlabs/skeleton";
+	import { onMount } from "svelte";
+
+	let username;
+
+	onMount(() => {
+    	if(typeof window !== 'undefined') {
+ 	   		username = localStorage.getItem('username');
+    	}
+	});
 </script>
 
 <div class="container mx-auto p-8 space-y-8">
     <PageTransitions>
         <h1 class="h1">
-            <h1 class="bg-gradient-to-br from-pink-500 to-violet-500 bg-clip-text text-transparent box-decoration-clone">welcome, ian!</h1>
+            <h1 class="bg-gradient-to-br from-pink-500 to-violet-500 bg-clip-text text-transparent box-decoration-clone">welcome, {username}!</h1>
         </h1>
         <section>
             <div class="card p-20 container mx-auto space-y-8">
