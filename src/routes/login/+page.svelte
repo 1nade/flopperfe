@@ -4,12 +4,11 @@
 	import { onMount } from "svelte";
 
 	if(localStorage) {
-		
-	}
-	if (localStorage.flopperToken) {
-        onMount(() => {window.open("/dashboard/user","_self")});
-    }
-
+		if (localStorage.flopperToken) {
+                  onMount(() => {window.open("/dashboard/user","_self")});
+		}
+	 }
+	
 	function login() {
 		var emailInput = document.getElementById('email-input');
 		// @ts-ignore
