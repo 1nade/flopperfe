@@ -3,6 +3,9 @@
 	import { modalStore, localStorageStore } from '@skeletonlabs/skeleton';
 	import { onMount } from "svelte";
 
+	if(localStorage) {
+		
+	}
 	if (localStorage.flopperToken) {
         onMount(() => {window.open("/dashboard/user","_self")});
     }
