@@ -1,4 +1,3 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 <script lang="ts">
 	import PageTransitions from '../../lib/PageTransitions.svelte';
 	import { type ModalSettings, modalStore, localStorageStore } from '@skeletonlabs/skeleton';
@@ -18,8 +17,6 @@
 		modalStore.trigger(m);
 	}
 
-
-
 	function login() {
 		var emailInput = document.getElementById('email-input');
 		// @ts-ignore
@@ -37,17 +34,20 @@
 		request.onreadystatechange = function () {
 			if (request.readyState === 4 && request.status === 200) {
 				var response = JSON.parse(request.responseText);
-				// Use the parsed JSON response here
 				console.log(response);
+                // check if account exists
 				if (response.message == 'wow') {
 					alert('Whoops! Your password is not correct');
 				} else if (response.message == 'user does not exist') {
 					alert('Whoops! Your account does not exist.');
 				} else {
+                    // create or override localStorage items
 					localStorage.setItem('username', response.username);
                     localStorage.setItem('flopperToken', response.sessionId);
                     localStorage.setItem('createdAt', response.createdAt);
 
+                    // redirect to dashbaord after login
+                    window.open("/dashboard/user","_self")
 				}
 			}
 		};

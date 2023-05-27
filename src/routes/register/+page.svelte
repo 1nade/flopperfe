@@ -1,4 +1,3 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 <script>
     import PageTransitions from "../../lib/PageTransitions.svelte";
     import { onMount } from "svelte";
