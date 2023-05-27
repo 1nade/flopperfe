@@ -1,21 +1,11 @@
 <script lang="ts">
 	import PageTransitions from '../../lib/PageTransitions.svelte';
-	import { type ModalSettings, modalStore, localStorageStore } from '@skeletonlabs/skeleton';
+	import { modalStore, localStorageStore } from '@skeletonlabs/skeleton';
 	import { onMount } from "svelte";
 
 	if (localStorage.flopperToken) {
         onMount(() => {window.open("/dashboard/user","_self")});
     }
-
-	function error(): void {
-		const m: ModalSettings = {
-			type: 'confirm',
-			title: 'Error',
-			body: 'sdfsdfsfdsfdsfd',
-			response: (r: boolean) => console.log('response:', r)
-		};
-		modalStore.trigger(m);
-	}
 
 	function login() {
 		var emailInput = document.getElementById('email-input');
