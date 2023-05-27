@@ -5,7 +5,7 @@
     import { type ModalSettings, modalStore } from "@skeletonlabs/skeleton";
 	import { onMount } from "svelte";
 
-	let username;
+	let username: string | null;
 
 	onMount(() => {
     	if(typeof window !== 'undefined') {

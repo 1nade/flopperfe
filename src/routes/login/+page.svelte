@@ -3,10 +3,10 @@
 	import PageTransitions from '../../lib/PageTransitions.svelte';
 	import { type ModalSettings, modalStore, localStorageStore } from '@skeletonlabs/skeleton';
 	import { onMount } from "svelte";
+
 	if (localStorage.flopperToken) {
         onMount(() => {window.open("/dashboard/user","_self")});
     }
-
 
 	function error(): void {
 		const m: ModalSettings = {
@@ -30,7 +30,7 @@
 		var password = passwordInput.value;
 
 		var url =
-			'https://backend.flopper.xyz/infinity/acct/login?email=' + email + '&password=' + password;
+			'https://newapi.flopper.xyz/infinity/acct/login?email=' + email + '&password=' + password;
 
 		var request = new XMLHttpRequest();
 		request.open('GET', url, true);
@@ -47,7 +47,7 @@
 					localStorage.setItem('username', response.username);
                     localStorage.setItem('flopperToken', response.sessionId);
                     localStorage.setItem('createdAt', response.createdAt);
-                    
+
 				}
 			}
 		};

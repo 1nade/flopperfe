@@ -4,11 +4,13 @@
 	import PageTransitions from '../../../lib/PageTransitions.svelte';
 	import { onMount } from "svelte";
 
-	let username;
+	let username: string | null;
+	let creationDate: string | null;
 
 	onMount(() => {
     	if(typeof window !== 'undefined') {
  	   		username = localStorage.getItem('username');
+			creationDate = localStorage.getItem('createdAt')
     	}
 	});
 </script>
@@ -19,15 +21,18 @@
 			<h1
 				class="bg-gradient-to-br from-pink-500 to-violet-500 bg-clip-text text-transparent box-decoration-clone"
 			>
-				dashboard
+				Dashboard
 			</h1>
 		</h1>
+		<h4>
+			
+		</h4>
 		<section>
-			<div class="card p-20 container mx-auto space-y-8">
-				<h2 class="h2" id="nameTitle">welcome, {username}!</h2>
-				<p>account creation date + whatever else i want to put smh :skiull:</p>
+			<div class="card p-20 container mx-auto space-y-8 variant-ghost">
+				<h2 class="h2" id="nameTitle">Welcome, {username}!</h2>
+				<p>You logged in at: {creationDate}</p>
 			</div>
-			<div class="card p-20 container mx-auto space-y-8">
+			<div class="card p-20 container mx-auto space-y-8 variant-ghost">
 				<h2 class="h2">item shop</h2>
 				<p>TODO:</p>
 				<p>Setup Item shop ui</p>
