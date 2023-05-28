@@ -4,10 +4,12 @@
 	import { fUsername, fToken, fLoginDate } from '../../lib/stores/stores';
 	import { browser } from '$app/environment';
 
-	if (localStorage.flopperToken) {
-        onMount(() => {window.open("/dashboard/user","_self")});
-    }
-
+	if(localStorage) {
+		if (localStorage.flopperToken) {
+                  onMount(() => {window.open("/dashboard/user","_self")});
+		}
+	 }
+	
 	function login() {
 		var emailInput = document.getElementById('email-input');
 		// @ts-ignore
