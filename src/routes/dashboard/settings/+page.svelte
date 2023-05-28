@@ -88,7 +88,7 @@
 				</h2>
 				<div class="space-y-5">
 					<h3>Change Username</h3>
-					<input class="input variant-ghost" title="Change Username" type="text" placeholder="Username" />
+					<input class="input variant-ghost" title="Change Username" type="text" id="username-input" placeholder="Username" />
 					<div class="label">
 						<!-- svelte-ignore a11y-missing-attribute -->
 						<a
@@ -103,7 +103,7 @@
 				</div>
 				<div class="space-y-5">
 					<h3>Reset Password</h3>
-					<input class="input variant-ghost" title="Reset Password" type="password" placeholder="Password" />
+					<input class="input variant-ghost" title="Reset Password" type="password" id="password-input" placeholder="Password" />
 					<div class="label">
 						<!-- svelte-ignore a11y-missing-attribute -->
 						<a
