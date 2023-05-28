@@ -1,7 +1,8 @@
 <script lang="ts">
 	import PageTransitions from '../../lib/PageTransitions.svelte';
-	import { modalStore, localStorageStore } from '@skeletonlabs/skeleton';
 	import { onMount } from "svelte";
+	import { fUsername, fToken, fLoginDate } from '../../lib/stores/stores';
+	import { browser } from '$app/environment';
 
 	if (localStorage.flopperToken) {
         onMount(() => {window.open("/dashboard/user","_self")});
@@ -31,13 +32,14 @@
 				} else if (response.message == 'user does not exist') {
 					alert('Whoops! Your account does not exist.');
 				} else {
-                    // create or override localStorage items
-					localStorage.setItem('username', response.username);
-                    localStorage.setItem('flopperToken', response.sessionId);
-                    localStorage.setItem('createdAt', response.createdAt);
-
-                    // redirect to dashbaord after login
-                    window.open("/dashboard/user","_self")
+					if (browser) {
+						// create or override localStorage items
+						localStorage.setItem('username', response.username);
+						localStorage.setItem('flopperToken', response.sessionId);
+						localStorage.setItem('createdAt', response.createdAt);
+						// redirect to dashbaord after login
+						window.open("/dashboard/user","_self")
+					}
 				}
 			}
 		};
