@@ -1,6 +1,52 @@
 <script>
     import PageTransitions from "../../lib/PageTransitions.svelte";
     import { onMount } from "svelte";
+    import { browser } from "$app/environment";
+
+    if(localStorage) {
+		if (localStorage.flopperToken) {
+            onMount(() => {window.open("/dashboard/user","_self")});
+		}
+	}
+
+    function register() {
+        var usernameInput = document.getElementById('username-input');
+        // @ts-ignore
+        var username = usernameInput.value;
+
+        var emailInput = document.getElementById('email-input');
+        // @ts-ignore
+        var email = emailInput.value;
+
+        var passwordInput = document.getElementById('password-input');
+        // @ts-ignore
+        var password = passwordInput.value;
+
+        var url =
+			'https://newapi.flopper.xyz/infinity/email/verify?email=' + email + '&password=' + password + "&username=" + username;
+
+		var request = new XMLHttpRequest();
+		request.open('GET', url, true);
+		request.onreadystatechange = function () {
+			if (request.readyState === 4 && request.status === 200) {
+				var response = JSON.parse(request.responseText);
+				console.log(response);
+                // check if account exists
+				if (response.code == 500) {
+					alert('Whoops! Your email is not valid. If this problem persists, please contact support@flopper.xyz or join our discord at discord.gg/flopper.');
+				} else if (response.code == 200) {
+					if (browser) {
+						// redirect to dashboard after register
+						window.open("/","_self");
+                        alert("Account created! Check your inbox for a verification email.");
+					}
+				} else {
+                    alert('Whoops! An unknown error has occured. Please try again in a few moments.')
+                }
+			}
+		};
+		request.send();
+    }
 </script>
 <div class="container h-full mx-auto flex justify-center items-center">
     <PageTransitions>
@@ -11,25 +57,26 @@
             <div class="card p-4 w-full text-token space-y-4 variant-ghost">
                 <label class="label">
                     <span>Username</span>
-                    <input class="input" title="Username" type="search" placeholder="xX_FortniteGamer69_Xx" />
+                    <input id="username-input" class="input" title="Username" type="search" placeholder="xX_FortniteGamer69_Xx" />
                 </label>
                 <label class="label">
                     <span>Email</span>
-                    <input class="input" title="Email" type="email" placeholder="user@flopper.xyz" autocomplete="email" />
+                    <input id="email-input" class="input" title="Email" type="email" placeholder="user@flopper.xyz" autocomplete="email" />
                 </label>
                 <label class="label">
                     <span>Password</span>
-                    <input class="input" title="Password" type="password" />
+                    <input id="password-input" class="input" title="Password" type="password" />
                 </label>
                 <div class="label">
+                    <!-- svelte-ignore a11y-missing-attribute -->
                     <a
                     class="btn variant-ghost"
-                    href="/login/registered/"
                     rel="noreferrer"
+                    on:click={register}
                     >
                         Register
                     </a>
-                </div>
+                </div> 
             </div>
         </div>
     </PageTransitions>

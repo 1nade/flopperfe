@@ -6,9 +6,9 @@
 
 	if(localStorage) {
 		if (localStorage.flopperToken) {
-                  onMount(() => {window.open("/dashboard/user","_self")});
+            onMount(() => {window.open("/dashboard/user","_self")});
 		}
-	 }
+	}
 	
 	function login() {
 		var emailInput = document.getElementById('email-input');

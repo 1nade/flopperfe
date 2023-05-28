@@ -22,18 +22,20 @@
 				Dashboard
 			</h1>
 		</h1>
-		<h4>
-			
-		</h4>
+		<h2>
+			ㅤ
+		</h2>
 		<section>
 			<div class="card p-20 container mx-auto space-y-8 variant-ghost">
 				<h2 class="h2" id="nameTitle">Welcome, {username}!</h2>
 				<p>You logged in at: {creationDate}</p>
 			</div>
+			<h2>
+				ㅤ
+			</h2>
 			<div class="card p-20 container mx-auto space-y-8 variant-ghost">
-				<h2 class="h2">item shop</h2>
-				<p>TODO:</p>
-				<p>Setup Item shop ui</p>
+				<h2 class="h2">Item Shop</h2>
+				
 			</div>
 		</section>
 	</PageTransitions>
