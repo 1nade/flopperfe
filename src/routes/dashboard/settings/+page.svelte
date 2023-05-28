@@ -52,8 +52,7 @@
 			flopperToken = localStorage.getItem('flopperToken');
 		}
 
-        var url =
-			'https://newapi.flopper.xyz/infinity/api/password/change?newPassword=' + password + '&sessionId=' + flopperToken;
+        var url = 'https://newapi.flopper.xyz/infinity/api/password/change?newPassword=' + password + '&sessionId=' + flopperToken;
 
 		var request = new XMLHttpRequest();
 		request.open('GET', url, true);
@@ -61,6 +60,7 @@
 			if (request.readyState === 4 && request.status === 200) {
 				var response = JSON.parse(request.responseText);
 				console.log(response);
+				console.log(url);
                 // check if account exists
 				if (response.message == "invalid sessionId") {
 					alert('Whoops! Your session ID is not valid. Please try again in a few moments. If this problem persists, contact support@flopper.xyz or join our discord at discord.gg/flopper.');
@@ -72,6 +72,11 @@
 		request.send();
 	}
 </script>
+
+<head>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css">
+	<title>Flopper | Settings</title>
+</head>
 
 <div class="container mx-auto p-8 space-y-8">
     <PageTransitions>

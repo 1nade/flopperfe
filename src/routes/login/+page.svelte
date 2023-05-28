@@ -72,6 +72,8 @@
 				</label>
 				<div class="label">
 					<a class="btn variant-ghost" on:click={login} href="/login" rel="noreferrer"> Login </a>
+					<h4>ㅤ</h4>
+					<h4 class="h4 text-xs">Don't have an account? <a href="/register">Register.</a></h4>
 				</div>
 			</div>
 		</div>

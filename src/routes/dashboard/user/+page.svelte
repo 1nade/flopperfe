@@ -13,6 +13,11 @@
 	});
 </script>
 
+<head>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css">
+	<title>Flopper | Dashboard</title>
+</head>
+
 <div class="container mx-auto p-8 space-y-8">
 	<PageTransitions>
 		<h1 class="h1">
