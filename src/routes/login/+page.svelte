@@ -39,7 +39,7 @@
 						localStorage.setItem('username', response.username);
 						localStorage.setItem('flopperToken', response.sessionId);
 						localStorage.setItem('createdAt', response.createdAt);
-						// redirect to dashbaord after login
+						// redirect to dashboard after login
 						window.open("/dashboard/user","_self")
 					}
 				}
